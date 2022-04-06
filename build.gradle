@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'war'
+    id 'eclipse-wtp'
+}
+//mainClassName = 'com.ciqd.tmt.apiprovider.impl.CIQDTMTRMIServer'
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+}
+project.webAppDirName = 'WebContent'
+
+dependencies {
+  annotationProcessor (
+        "org.projectlombok:lombok:1.18.20"
+    )
+    implementation (
+            "com.google.guava:guava:28.2-jre",
+            "org.glassfish.jersey.containers:jersey-container-servlet:2.25.1",
+            "org.glassfish.jersey.media:jersey-media-json-jackson:2.25.1",
+            "org.projectlombok:lombok:1.18.20",
+            "com.googlecode.json-simple:json-simple:1.1.1",
+            "org.json:json:20190722",
+            "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2",
+			"org.glassfish.jaxb:jaxb-runtime:2.3.2",
+			"org.mongodb:mongo-java-driver:3.8.2",
+			"com.amazonaws:aws-java-sdk-ecs:1.12.13",
+			"com.amazonaws:aws-java-sdk-logs:1.12.17",
+			"org.apache.logging.log4j:log4j-api:2.15.0",
+  			"org.apache.logging.log4j:log4j-core:2.15.0",
+  			//"log4j:log4j:1.2.17",
+            "org.apache.commons:commons-lang3:3.0"
+            
+            
+    )
+ 
+}
+
+class ProjectVersion {
+    String majorVersion = System.getenv("MAJOR_VERSION");
+    String minorVersion = System.getenv("MINOR_VERSION");
+    String patchVersion = System.getenv("PATCH_VERSION");
+    String srcBranchName = System.getenv("SRC_BRANCH_NAME");
+}
